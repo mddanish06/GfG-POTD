@@ -1,0 +1,28 @@
+// 🎉Stock Span Problem🏆
+
+// Approach:
+// 👉Used a stack to track previous greater elements efficiently.
+// 👉Calculated span as the difference between indices after popping smaller elements.
+// 👉Time complexity: O(N).
+
+public ArrayList<Integer> calculateSpan(int[] arr) {
+    // write code here
+    int n = arr.length;
+    Stack<Integer> st = new Stack();
+    ArrayList<Integer> res = new ArrayList<>
+        (Collections.nCopies(n, 1));
+    
+    st.push(0);
+    
+    for(int i=1; i<n; i++){
+        while(!st.isEmpty() && arr[st.peek()] <= arr[i]){
+            st.pop();
+        }
+        
+        int span = st.isEmpty() ? (i+1) : (i-st.peek());
+        res.set(i, span);
+        st.push(i);
+    }
+    
+    return res;
+}
