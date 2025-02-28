@@ -1,0 +1,37 @@
+// 🎉Evaluation of Postfix Expression🏆
+
+// 👉Used a stack to evaluate the postfix expression by processing operands and operators.
+// 👉Implemented functions to identify operators and apply operations efficiently.
+// 👉Time complexity: O(N).
+
+class Solution{
+    public int evaluate(String[] arr) {
+        // code here
+        Stack<Integer> st = new Stack();
+        for(String ch : arr){
+            if(isOperator(ch)){
+                int b = st.pop();
+                int a = st.pop();
+                int res = apply(a, b, ch);
+                st.push(res);
+            }else{
+                st.push(Integer.parseInt(ch));
+            }
+        }
+        return st.pop();
+    }
+
+    boolean isOperator(String s){
+        return s.equals("+") || s.equals("-") || s.equals("*") || s.equals("/");
+    }
+    
+    int apply(int a, int b, String operator){
+        switch(operator){
+            case "+": return a + b;
+            case "-": return a - b;
+            case "*": return a * b;
+            case "/": return a / b;
+            default: return a;
+        }
+    }
+}
