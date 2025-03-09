@@ -1,4 +1,9 @@
+// 🎉Palindrome Substrings🏆
 
+// Approach:
+// 👉Used the Expand Around Center approach to count all palindromic substrings.
+// 👉Considered both even and odd length palindromes.
+// 👉Time complexity: O(N²).
 
 class Solution {
     public int countPS(String s) {
