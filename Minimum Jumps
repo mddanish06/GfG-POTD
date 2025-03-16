@@ -1,0 +1,26 @@
+// 🎉Minimum Jumps🏆
+
+// Approach:
+// 👉Used Greedy approach to find the minimum jumps needed to reach the end.
+// 👉Tracked the farthest position that can be reached and updated the jump count accordingly.
+// 👉Time complexity: O(N).   
+    
+class Solution {
+    static int minJumps(int[] arr) {
+        // code here
+        int n = arr.length;
+        int max = 0, choice = 0, jumps = 0;
+        
+        for(int i=0; i<n-1; i++){
+            max = Math.max(max, arr[i]+i);
+            if(i == choice){
+                choice = max;
+                jumps++;
+            }
+            if(choice >= n-1) return jumps;
+        }
+        
+        if(choice >= n-1) return jumps;
+        return -1;
+    }
+}
